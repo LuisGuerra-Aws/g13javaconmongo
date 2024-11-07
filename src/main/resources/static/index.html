@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Ahora Login</h2>
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            // Obtener valores del formulario
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+        
+            // URL del servicio API de login
+            const apiUrl = 'http://127.0.0.1:8080/api/users/login'; // Cambia esta URL a la de tu API
+        
+        
+            // Datos que se enviarán al servidor
+            const data = {
+                username: username,
+                password: password
+            };
+        
+            try {
+                // Enviar solicitud POST al servidor
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+        
+                // Verificar si la respuesta es exitosa
+                if (response.ok) {
+                    const result = await response.json();
+                    alert("Ingreso permitido");
+                } else {
+                    const error = await response.json();
+                    alert("ingreso negado");
+                }
+            } catch (error) {
+                alert("error");
+            }
+        });
+        
+    </script>
+</body>
+</html>

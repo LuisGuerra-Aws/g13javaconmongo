@@ -1,0 +1,26 @@
+body {
+    background-color: #f8f9fa;
+    padding-top: 5rem;
+}
+.navbar {
+    margin-bottom: 2rem;
+}
+.hero-section {
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+.card {
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.btn-primary {
+    border-radius: 2rem;
+}
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
